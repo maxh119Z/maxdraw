@@ -7,7 +7,7 @@ export default defineConfig({
   build: {
     outDir: 'dist', // This must match the "outputDirectory" in vercel.json
   },
-  base: '/<maxdraw>/'
+  base: '/maxdraw/'
 })
 
 
