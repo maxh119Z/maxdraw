@@ -13,9 +13,10 @@ import Header from './header.jsx';
 import People from './People.jsx';
 import Ipad from './Ipad.jsx';
 import Other from './other.jsx';
+
 import About from './About.jsx';
 import { BrowserRouter as Router, useLocation } from 'react-router-dom';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link} from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 
 function App() {
@@ -95,12 +96,12 @@ function Home() {
         <h2>Website made in 2024 Summer</h2>
       </div>
       <div id="overview">
-        <a href="/People">
+      <Link to="/People">
           <div className="image-container">
             <img src="/maxdraw/images/person10.jpg" alt="Overview Image" id="overviewpicture" />
             <div className="bottom-right-text">Recent</div>
           </div>
-        </a>
+        </Link>
         <div id="overview-text">
           <p id="text1">
             On Max's Drawings, you will see drawings I do over time. I like drawing sometimes, so I
@@ -114,30 +115,30 @@ function Home() {
       </div>
       <div className="line-1"></div>
       <div className="person" id="bar">
-        <a href="/People">
+      <Link to="/People"> 
           <div className="image-container">
             <img src="/maxdraw/images/person1.jpg" alt="personlookingsideways" className="indexpics" />
             <div className="bottom-right-text">People</div>
           </div>
-        </a>
-        <a href="/Ipad">
+        </Link>
+        <Link to="/Ipad">
           <div className="image-container">
             <img src="/maxdraw/images/ipad1.jpg" alt="boyheronwallpaperIdrew" className="indexpics" />
             <div className="bottom-right-text">Ipad Draws</div>
           </div>
-        </a>
-        <a href="/Other">
+        </Link>
+        <Link to="/Other">
           <div className="image-container">
             <img src="/maxdraw/images/other1.jpg" alt="abstractpicture" className="indexpics" />
             <div className="bottom-right-text">Other Stuff</div>
           </div>
-        </a>
-        <a href="/About">
+        </Link>
+        <Link to="/About">
           <div className="image-container">
             <img src="/maxdraw/images/maxpicture.jpg" alt="maxpicture" className="indexpics" />
             <div className="bottom-right-text">About me ig</div>
           </div>
-        </a>
+        </Link>
       </div>
     </motion.div>
   );
