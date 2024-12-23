@@ -5,6 +5,7 @@ import './App.css'; // Optional for styling
 import { auth , db} from './firebase/firebase.jsx'
 import {GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth'
 import { collection, doc, getDocs, query, setDoc, where, getDoc, onSnapshot , updateDoc, increment} from "firebase/firestore";
+import { Routes, Route, Link} from 'react-router-dom';
 
 function header() {
     const [name, setName] = useState("");
