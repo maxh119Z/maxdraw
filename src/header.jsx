@@ -87,17 +87,17 @@ function header() {
     return (
       <header className="site-header">
         <a id="Logoname" href="/">
-            <img id="logoimg" src="images/connectlogo.png" alt="Logo" />
+            <img id="logoimg" src="/maxdraw/images/connectlogo.png" alt="Logo" />
         </a>
         <div className="header-content">
 
           <nav>
             <ul>
               <li><a href="/">Home</a></li>
-              <li><a href="/People">People</a></li>
-              <li><a href="/Ipad">Ipad</a></li>
-              <li><a href="/Other">Other</a></li>
-              <li><a href="/About">About</a></li>
+              <li><a href="/maxdraw/People">People</a></li>
+              <li><a href="/maxdraw/Ipad">Ipad</a></li>
+              <li><a href="/maxdraw/Other">Other</a></li>
+              <li><a href="/maxdraw/About">About</a></li>
               {name ? (
       // If user is logged in, show SIGNOUT button
                 <li><button class="dropbtn2" onClick={signOutOfAccount}>SIGNOUT</button></li>

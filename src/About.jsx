@@ -19,7 +19,7 @@ function About() {
 </div>
 <div className="person">
   <span id="maximg">
-    <img id="maxpicture" src="images/maxpicture.jpg" alt="Max" />
+    <img id="maxpicture" src="/maxdraw/images/maxpicture.jpg" alt="Max" />
   </span>
   <span className="info2">
     <h1>Max Zhang</h1>
@@ -48,7 +48,7 @@ function About() {
     arguing with my mom.
   </span>
   <span id="maximg">
-    <img id="maxpicture" src="images/IMG_0163.jpg" alt="Max" />
+    <img id="maxpicture" src="/maxdraw/images/IMG_0163.jpg" alt="Max" />
   </span>
 </div>
       </motion.div>

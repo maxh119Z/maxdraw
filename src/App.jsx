@@ -14,7 +14,6 @@ import People from './People.jsx';
 import Ipad from './Ipad.jsx';
 import Other from './other.jsx';
 import About from './About.jsx';
-import { isMobile } from 'react-device-detect';
 import { BrowserRouter as Router, useLocation } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -22,86 +21,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 function App() {
   const containerRef = useRef(null); // Used for floating elements animation
 
-  const mobileshit = () => {
-    console.log('Running mobileshit logic...');
-    if (isMobile || window.self !== window.top) {
-      alert('Mobile Detected');
-      document.body.style.opacity = 1;
-
-      // Style adjustments for different elements
-      const adjustFontSizes = (selector, fontSize) => {
-        document.querySelectorAll(selector)?.forEach(el => {
-          el.style.fontSize = fontSize;
-        });
-      };
-
-      adjustFontSizes('.info', '0.7rem');
-      adjustFontSizes('.info2', '0.7rem');
-      adjustFontSizes('.bottom-right-text', '0.85rem');
-
-      // Title adjustments
-      const titleEl = document.getElementById('TITLE');
-      if (titleEl) {
-        titleEl.style.fontSize = '1.5rem';
-        titleEl.style.fontWeight = 'bold';
-      }
-
-      const descriptionEl = document.getElementById('titledescription');
-      if (descriptionEl) {
-        descriptionEl.style.fontSize = '1rem';
-      }
-
-      // Orientation-specific adjustments
-      const text1El = document.getElementById('text1');
-      if (text1El && window.matchMedia('(orientation: portrait)').matches) {
-        text1El.innerHTML =
-          'This website shows drawings I drew for fun. I like drawing, and am mostly self-taught. I hope you enjoy! :P';
-      }
-    }
-
-    if (document.title === 'Overview') {
-      console.log('Overview-specific logic triggered.');
-      // Create GIF animation
-      const gifDiv = document.createElement('div');
-      gifDiv.className = 'gif';
-      const gifImg = document.createElement('img');
-      gifImg.src = `images/back2.gif?t=${new Date().getTime()}`;
-      gifImg.className = 'gifimg';
-      gifDiv.appendChild(gifImg);
-      document.body.appendChild(gifDiv);
-
-      // Add fade-out effect
-      setTimeout(() => {
-        gifImg.classList.add('fade-out');
-        setTimeout(() => {
-          gifImg.remove();
-          gifDiv.remove();
-        }, 500);
-      }, 2900);
-
-      // Add floating elements
-      const numberOfSquares = 34;
-      setTimeout(() => {
-        const container = containerRef.current;
-        if (container) container.classList.add('shake');
-
-        for (let i = 0; i < numberOfSquares; i++) {
-          setTimeout(() => {
-            const square = document.createElement('div');
-            square.classList.add(
-              Math.random() > 0.83 ? 'floating-rectangle' : 'floating-square'
-            );
-            square.style.left = `${Math.random() * window.innerWidth}px`;
-            if (container) container.appendChild(square);
-
-            setTimeout(() => {
-              if (container) container.removeChild(square);
-            }, 4000);
-          }, Math.random() * 1350);
-        }
-      }, 1750);
-    }
-  };
 
   const addViewCount = async () => {
     try {
@@ -124,14 +43,14 @@ function App() {
 
   useEffect(() => {
     addViewCount();
-    mobileshit();
+    //mobileshit();
   }, []);
 
   return (
-    <Router>
+    <Router basename="/maxdraw">
       <Header />
       <div ref={containerRef}>
-        <AnimatedRoutes />
+        <AnimatedRoutes basename="/maxdraw" />
       </div>
       <footer>
         <p>
@@ -150,21 +69,16 @@ function App() {
 }
 
 function AnimatedRoutes() {
-  const location = useLocation();
-
   return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Home />} />
-        <Route path="/People" element={<People />} />
-        <Route path="/Ipad" element={<Ipad />} />
-        <Route path="/Other" element={<Other />} />
-        <Route path="/About" element={<About />} />
-      </Routes>
-    </AnimatePresence>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/People" element={<People />} />
+      <Route path="/Ipad" element={<Ipad />} />
+      <Route path="/Other" element={<Other />} />
+      <Route path="/About" element={<About />} />
+    </Routes>
   );
 }
-
 function Home() {
   return (
     <motion.div
@@ -183,7 +97,7 @@ function Home() {
       <div id="overview">
         <a href="/People">
           <div className="image-container">
-            <img src="images/person10.jpg" alt="Overview Image" id="overviewpicture" />
+            <img src="/maxdraw/images/person10.jpg" alt="Overview Image" id="overviewpicture" />
             <div className="bottom-right-text">Recent</div>
           </div>
         </a>
@@ -202,25 +116,25 @@ function Home() {
       <div className="person" id="bar">
         <a href="/People">
           <div className="image-container">
-            <img src="images/person1.jpg" alt="personlookingsideways" className="indexpics" />
+            <img src="/maxdraw/images/person1.jpg" alt="personlookingsideways" className="indexpics" />
             <div className="bottom-right-text">People</div>
           </div>
         </a>
         <a href="/Ipad">
           <div className="image-container">
-            <img src="images/ipad1.jpg" alt="boyheronwallpaperIdrew" className="indexpics" />
+            <img src="/maxdraw/images/ipad1.jpg" alt="boyheronwallpaperIdrew" className="indexpics" />
             <div className="bottom-right-text">Ipad Draws</div>
           </div>
         </a>
         <a href="/Other">
           <div className="image-container">
-            <img src="images/other1.jpg" alt="abstractpicture" className="indexpics" />
+            <img src="/maxdraw/images/other1.jpg" alt="abstractpicture" className="indexpics" />
             <div className="bottom-right-text">Other Stuff</div>
           </div>
         </a>
         <a href="/About">
           <div className="image-container">
-            <img src="images/maxpicture.jpg" alt="maxpicture" className="indexpics" />
+            <img src="/maxdraw/images/maxpicture.jpg" alt="maxpicture" className="indexpics" />
             <div className="bottom-right-text">About me ig</div>
           </div>
         </a>
