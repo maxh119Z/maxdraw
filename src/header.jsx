@@ -93,11 +93,11 @@ function header() {
 
           <nav>
             <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/maxdraw/People">People</a></li>
-              <li><a href="/maxdraw/Ipad">Ipad</a></li>
-              <li><a href="/maxdraw/Other">Other</a></li>
-              <li><a href="/maxdraw/About">About</a></li>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/People">People</Link></li>
+              <li><Link to="/Ipad">Ipad</Link></li>
+              <li><Link to="/Other">Other</Link></li>
+              <li><Link to="/About">About</Link></li>
               {name ? (
       // If user is logged in, show SIGNOUT button
                 <li><button class="dropbtn2" onClick={signOutOfAccount}>SIGNOUT</button></li>
