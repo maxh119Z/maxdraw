@@ -9,7 +9,7 @@ import { Routes, Route, Link} from 'react-router-dom';
 
 function header() {
     const [name, setName] = useState("");
-    useState(() => {
+    useEffect(() => {
             onAuthStateChanged(auth, (currentUser) => {
             if (currentUser){
                 if (currentUser.displayName){
