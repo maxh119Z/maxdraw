@@ -1,9 +1,28 @@
-import React from 'react';
+import { useEffect, useRef, React } from 'react';
 import './App.css';
 import Header from './header.jsx';
+import { preloadImages } from './utils';
 import { motion } from "framer-motion";
 
 const Ipad = () => {
+  useEffect(() => {
+    // Preload images specific to the Home component
+    const imagesToPreload = [
+      "images/connectlogo.png",
+      "images/Croppedbackground1.png",
+      "images/open.png",
+      "images/close.png",
+      "images/ipad1.jpg",
+      "images/ipad2.jpg",
+      "images/person9.png"
+    ];
+
+    preloadImages(imagesToPreload).then(() => {
+      console.log("Images for Ipad preloaded!");
+    }).catch((error) => {
+      console.error("Error preloading images for Ipad:", error);
+    });
+  }, []);
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}

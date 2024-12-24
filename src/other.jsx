@@ -1,8 +1,28 @@
-import React from 'react';
+import { useEffect, useRef, React } from 'react';
 import { motion } from 'framer-motion';
 import './App.css';
+import { preloadImages } from './utils';
 
 const Other = () => {
+  useEffect(() => {
+    // Preload images specific to the Home component
+    const imagesToPreload = [
+      "images/connectlogo.png",
+      "images/Croppedbackground1.png",
+      "images/open.png",
+      "images/close.png",
+      "images/other6.jpg",
+      "images/other2.jpg",
+      "images/other3.jpg",
+      "images/other1.jpg"
+    ];
+
+    preloadImages(imagesToPreload).then(() => {
+      console.log("Images for Other preloaded!");
+    }).catch((error) => {
+      console.error("Error preloading images for Other:", error);
+    });
+  }, []);
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5, staggerChildren: 0.2 } },

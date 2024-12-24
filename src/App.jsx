@@ -13,6 +13,7 @@ import Header from './header.jsx';
 import People from './People.jsx';
 import Ipad from './Ipad.jsx';
 import Other from './other.jsx';
+import { preloadImages } from './utils';
 
 import About from './About.jsx';
 import { BrowserRouter as Router, useLocation } from 'react-router-dom';
@@ -22,6 +23,49 @@ import { AnimatePresence, motion } from 'framer-motion';
 function App() {
   const containerRef = useRef(null); // Used for floating elements animation
 
+  const pageImages = {
+    home: ["images/connectlogo.png",
+      "images/Croppedbackground1.png",
+      "images/maxpicture.jpg",
+      "images/santa.png",
+      "images/christmas.png",
+      "images/person1.jpg",
+      "images/open.png",
+      "images/close.png",
+      "images/back2.gif",
+      "images/person10.jpg",
+      "images/ipad1.jpg"],
+    People: ["images/connectlogo.png",
+      "images/Croppedbackground1.png",
+      "images/open.png",
+      "images/close.png",
+      "images/caden.jpg",
+      "images/person7.jpg",
+      "images/person10.jpg"],
+    Ipad: ["images/connectlogo.png",
+      "images/Croppedbackground1.png",
+      "images/open.png",
+      "images/close.png",
+      "images/ipad1.jpg",
+      "images/ipad2.jpg",
+      "images/person9.png"],
+    Other: [
+      "images/connectlogo.png",
+      "images/Croppedbackground1.png",
+      "images/open.png",
+      "images/close.png",
+      "images/other6.jpg",
+      "images/other2.jpg",
+      "images/other3.jpg",
+      "images/other1.jpg"
+    ],
+    AboutUs: ["images/connectlogo.png",
+      "images/Croppedbackground1.png",
+      "images/open.png",
+      "images/close.png",
+      "images/maxpicture.jpg"]
+  };
+  
 
   const addViewCount = async () => {
     try {
@@ -81,6 +125,29 @@ function AnimatedRoutes() {
   );
 }
 function Home() {
+  useEffect(() => {
+    // Preload images specific to the Home component
+    const imagesToPreload = [
+      "images/connectlogo.png",
+      "images/Croppedbackground1.png",
+      "images/maxpicture.jpg",
+      "images/santa.png",
+      "images/christmas.png",
+      "images/person1.jpg",
+      "images/open.png",
+      "images/close.png",
+      "images/back2.gif",
+      "images/person10.jpg",
+      "images/ipad1.jpg"
+    ];
+
+    preloadImages(imagesToPreload).then(() => {
+      console.log("Images for Home preloaded!");
+    }).catch((error) => {
+      console.error("Error preloading images for Home:", error);
+    });
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0, x: -100 }}

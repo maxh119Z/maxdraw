@@ -1,10 +1,28 @@
-import React from 'react';
+import { useEffect, useRef, React } from 'react';
 import './App.css';
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-
+import { preloadImages } from './utils';
 
 function People() {
+  useEffect(() => {
+    // Preload images specific to the Home component
+    const imagesToPreload = [
+      "images/connectlogo.png",
+      "images/Croppedbackground1.png",
+      "images/open.png",
+      "images/close.png",
+      "images/caden.jpg",
+      "images/person7.jpg",
+      "images/person10.jpg"
+    ];
+
+    preloadImages(imagesToPreload).then(() => {
+      console.log("Images for People preloaded!");
+    }).catch((error) => {
+      console.error("Error preloading images for People:", error);
+    });
+  }, []);
   return (
     <motion.div
       initial={{ opacity: 0, x: -100 }}

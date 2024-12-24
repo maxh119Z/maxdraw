@@ -1,9 +1,26 @@
-import React from 'react';
+import { useEffect, useRef, React } from 'react';
 import './App.css';
 import Header from './header.jsx';
 import { motion } from 'framer-motion';
+import { preloadImages } from './utils';
 
 function About() {
+  useEffect(() => {
+    // Preload images specific to the Home component
+    const imagesToPreload = [
+      "images/connectlogo.png",
+      "images/Croppedbackground1.png",
+      "images/open.png",
+      "images/close.png",
+      "images/maxpicture.jpg"
+    ];
+
+    preloadImages(imagesToPreload).then(() => {
+      console.log("Images for About preloaded!");
+    }).catch((error) => {
+      console.error("Error preloading images for About:", error);
+    });
+  }, []);
   return (
     <>
       <motion.div
