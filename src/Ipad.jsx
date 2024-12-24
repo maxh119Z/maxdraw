@@ -13,7 +13,7 @@ const Ipad = () => {
       "images/open.png",
       "images/close.png",
       "images/ipad1.jpg",
-      "images/ipad2.jpg",
+      "images/ipad2.png",
       "images/person9.png"
     ];
 
